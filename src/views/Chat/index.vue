@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import list from "./components/list.vue"
-import gpt from "./components/gpt.vue"
+import list from "./components/list/list.vue"
+import gpt from "./components/gpt/gpt.vue"
 export default {
     name:'Chat',
     components:{
@@ -19,9 +19,9 @@ export default {
 
 <style scoped>
 .chat{
-    width: 1460px;
-  height: 738px;
+  width: 100%;
+  height: 100%;
   display: flex;
-  justify-content: stretch;
+  /* justify-content: stretch; */
 }
 </style>

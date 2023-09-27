@@ -2,8 +2,10 @@
   <div class="box">
     <div class="box1">
       <div class="up">
-        <div class="headPortrait btn"></div>
-        <div class="btn" @click="chatneko">
+        <!-- 头像 -->
+        <div class="headPortrait btn" @click="user"  ></div>
+        <!-- 跳转路由 -->
+        <div class="btn " @click="chatneko"   :class="{active:$route.name == 'chatneko'}">
           <svg
             t="1692418099948"
             class="icon"
@@ -32,7 +34,8 @@
             ></path>
           </svg>
         </div>
-        <div class="btn" @click="drawing">
+        <!-- 跳转路由到绘画 -->
+        <div class="btn" @click="drawing"  :class="{active:$route.name == 'drawing'}">
           <svg
             t="1692418155900"
             class="icon"
@@ -50,7 +53,8 @@
             ></path>
           </svg>
         </div>
-        <div class="btn">
+        <!-- 跳转到音乐界面 -->
+        <div class="btn"  :class="{active:$route.name == 'music'}">
           <svg
             t="1692418220403"
             class="icon"
@@ -68,8 +72,10 @@
             ></path>
           </svg>
         </div>
+    
       </div>
       <div class="down">
+        <!-- 跳转到应用界面 -->
         <div class="btn">
           <svg
             t="1692392773635"
@@ -99,7 +105,11 @@
             ></path>
           </svg>
         </div>
-        <div class="btn">
+            <!-- 跳转到设置 -->
+        <div class="btn" 
+           @click="set"
+           :class="{active:setIsShow}"
+           >
           <svg
             t="1692392711074"
             class="icon"
@@ -123,22 +133,74 @@
       </div>
     </div>
 
+    <!-- 用户界面 -->
+    <userVue
+      :isShow="userIsShown"
+      @close="userClose"
+    ></userVue>
+
+    <!-- 设置界面 -->
+    <setVue 
+      :isShow="setIsShow"
+      @close="setClose"
+    ></setVue>
+
     <!-- 路由展示 -->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import setVue from './components/set/set.vue'
+import userVue from './components/user/user.vue'
 export default {
   name: "layout",
+  data() {
+    return {
+      setIsShow:false,
+      userIsShown:false,
+      t1:true,
+    }
+  },
   methods: {
+    // 跳转到chatGPT界面
     chatneko() {
       this.$router.push("chatneko");
     },
+    // 跳转到绘画界面
     drawing() {
       this.$router.push("drawing");
     },
+    // 点击设置,展示设置右边框
+    set(){
+      this.setIsShow = true;
+    },
+    // 关闭右边框
+    setClose(){
+      this.setIsShow = false;
+    },
+    // 点击用户设置
+    user(){
+      this.userIsShown = true;
+    },
+    // 关闭用户设置界面
+    userClose(){
+      this.userIsShown = false;
+    },
+
+    // 判断是不是当前路由
+    IsRoute(){
+        console.log(this.$route.name);
+        // return this.$route.name
+    },
+    titleclick(){
+      console.log(1);
+    }
   },
+  components:{
+    setVue,
+    userVue
+  }
 };
 </script>
 
@@ -148,13 +210,14 @@ export default {
   padding: 0;
 }
 
+/* 页面整体 */
 .box {
-  width: 1525px;
-  height: 735px;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: stretch;
 }
-/* 整体 */
+/* 整体 *//* 导航栏整体 */
 .box1 {
   width: 60px;
   /* flex: 1; */
@@ -166,11 +229,12 @@ export default {
   justify-content: space-between;
   align-items: center;
 }
-/* 单个按钮 */
+/* 单个导航按钮 */
 .btn {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 28px;
   margin-bottom: 35px;
+  border-radius: 25%;
 }
 
 svg {
@@ -182,5 +246,9 @@ svg {
 .headPortrait {
   background-color: rgb(137, 170, 199);
   margin-top: 50px;
+}
+
+.active{
+    background: rgb(180, 180, 180);
 }
 </style>

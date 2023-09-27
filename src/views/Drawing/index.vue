@@ -1,7 +1,6 @@
 <template>
-  <div class="box">
-    <div class="box3">
-      <div class="index">
+ 
+   
         <div class="main">
           <div class="left">
             <div class="show">
@@ -11,13 +10,12 @@
             </div>
             <div class="showlist">
               <!-- <div class="showlistbox"><img src="./00-56-3573bae6-6783-4427-93cb-fd02733e8d3c9691ecfd-70b8-4a5f-bd4d-4967cf5b73f4.jpg" alt="1"/></div> -->
-              <!-- <div class="showlistbox"><img src="./01-03-3573bae6-6783-4427-93cb-fd02733e8d3cfa559f46-0d78-4149-9981-b3a804d5726b.jpg" alt="2"/></div> -->
-              <!-- <div class="showlistbox"><img src="./01-04-3573bae6-6783-4427-93cb-fd02733e8d3c1ae1b82b-1968-4b3e-9616-9008f4629aa8.jpg" alt="3"/></div> -->
             </div>
             <div class="textinput">
-              <input type="text" class="input" />
+              <input type="text" class="input" v-model="inputValue" @keydown.enter="send" />
 
-              <div class="btn">
+              <!-- 发送按钮 -->
+              <div class="btn" @click="send">
                 <svg
                   t="1693072552648"
                   class="icon"
@@ -38,35 +36,43 @@
             </div>
           </div>
           <div class="right">
-            <div class="right-son1">历史记录</div>
-            <div class="right-son2">参数设置</div>
+            <div class="right-son1">
+                 
+            </div>
+            <div class="right-son2">
+
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+    
+ 
 </template>
 
 <script>
 export default {
   name: "Drawing",
+  data() {
+    return {
+      inputValue:''
+    }
+  },
+  methods: {
+     send(){
+      alert(this.inputValue)
+      this.inputValue = ""
+     }
+  },
 };
 </script>
 
 <style scoped>
-.box3 {
-  flex: 25;
-  width: 1400px;
-  background-color: rgb(245, 246, 247);
-  display: flex;
+
+svg {
+  width: 100%;
+  height: 100%;
 }
 
-.header {
-  width: 100%;
-  height: 70px;
-  background-color: rgb(245, 246, 247);
-  position: relative;
-}
+
 
 .main {
   width: 100%;
@@ -75,31 +81,34 @@ export default {
   background-color: rgb(245, 246, 247);
 }
 
-.box3 .index {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
 
 .left {
-  width: 80%;
-  background-color: antiquewhite;
+  width: 79%;
+  background-color:  rgb(245, 246, 247);
   position: relative;
 }
 .right {
   width: 20%;
-  background-color: aqua;
+  background-color: rgb(245, 246, 247);
 }
+
+/*  历史记录 */
 .right .right-son1 {
   width: 100%;
   height: 150px;
-  background-color: antiquewhite;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color:  rgb(245, 246, 247);
+}
+
+/* 参数配置 */
+.right .right-son2 {
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .left .show {
   width: 100%;
   height: 90%;
-  background-color: aquamarine;
+  background-color:  rgb(245, 246, 247);
 }
 .left .showlist {
   width: 12%;
@@ -107,7 +116,8 @@ export default {
   top: 0;
   right: 0;
   height: 90%;
-  background-color: red;
+  background-color:  rgb(245, 246, 247);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,30 +127,32 @@ export default {
   width: 90px;
   height: 90px;
   margin: 10px;
-  background-color: azure;
+  background-color:  rgb(245, 246, 247);
 }
 
 .textinput {
-  margin-left: 20%;
+  margin-left: 23%;
   margin-top: 5px;
   width: 60%;
   height: 50px;
-  background-color: black;
+  background-color:  rgb(245, 246, 247);
   align-items: center;
   display: flex;
 }
 
+/* 输入框 */
 .textinput .input {
   flex: 1;
-  background-color: blueviolet;
+  background-color:  rgb(245, 246, 247);
   height: 100%;
-  caret-color: red;
+  font-size: 20px;
+  caret-color:  black;
 }
 .textinput .btn {
   margin-top: 0px;
   width: 55px;
   height: 50px;
-  background-color: brown;
+  background-color:  rgb(245, 246, 247);
 }
 
 .left .show {

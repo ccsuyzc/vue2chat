@@ -1,0 +1,29 @@
+[
+    {
+      "name": "chatGPT3.5",
+      "id": "chatGPT3.5",
+      "PrivateKey": "",
+      "imgUrl": "",
+      "data": [
+        {
+          "role": "chatgpt", 
+          "msg": "# 您好!,有什么可以帮助您的吗? ",
+          "flag": 0, 
+          "id":"12fasd"
+        },
+        {
+          "role": "user",
+          "msg": "搞笑",
+          "flag": 1,
+          "id":"fdaefa1"
+        }
+      ]
+    },
+    {
+      "name": "chatGPT4.0",
+      "id": "chatGPT4.0",
+      "PrivateKey": "",
+      "imgUrl": "",
+      "data": []
+    }
+  ]
